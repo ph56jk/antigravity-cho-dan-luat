@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Antigravity cho dân luật</title>
+  <meta name="description" content="Hướng dẫn người mới dùng Antigravity trong ngành luật: sửa bài tập, soát hợp đồng, tạo PDF, viết Skill, làm trang web và dùng Google Flow.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233b5bdb'/%3E%3Cpath d='M16 6l8 20h-4l-4-11-4 11H8z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top">Antigravity<span> cho dân luật</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Mở menu" aria-expanded="false">☰</button>
+    <nav id="nav" class="nav">
+      <a href="#lam-quen">Làm quen</a>
+      <a href="#bai-tap">Sửa bài / soát hợp đồng</a>
+      <a href="#pdf">Tạo PDF</a>
+      <a href="#skill">Skill</a>
+      <a href="#website">Tạo web</a>
+      <a href="#flow">Google Flow</a>
+      <a href="#luu-y">Lưu ý</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" aria-label="Đổi giao diện sáng/tối">◐</button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow">Dành cho người mới · ngành luật</p>
+      <h1>Nhờ AI làm phần việc giấy tờ, bạn giữ phần suy nghĩ</h1>
+      <p class="lead">Antigravity là ứng dụng của Google, trong đó có một trợ lý AI (gọi là <b>agent</b>). Bạn nhắn yêu cầu bằng tiếng Việt như nhắn tin, agent sẽ <b>đọc file của bạn</b>, soạn nội dung và <b>lưu thành file mới</b> (Word, PDF, trang web…). Bạn không cần biết lập trình.</p>
+      <div class="chips">
+        <a href="#bai-tap" class="chip">⚖️ Sửa bài tập luật</a>
+        <a href="#bai-tap" class="chip">📑 Soát hợp đồng</a>
+        <a href="#pdf" class="chip">📄 Tạo PDF</a>
+        <a href="#skill" class="chip">🧩 Skill</a>
+        <a href="#website" class="chip">🌐 Tạo web</a>
+        <a href="#flow" class="chip">🎬 Google Flow</a>
+      </div>
+      <div class="callout warn"><b>Đọc trước khi dùng:</b> AI có thể <b>bịa điều luật, số hiệu văn bản hay án lệ</b> nghe rất thật. Luôn đối chiếu với nguồn chính thức, và <b>đừng đưa thông tin mật của khách hàng</b> vào. Xem chi tiết ở phần <a href="#luu-y">Lưu ý riêng cho ngành luật</a>.</div>
+    </section>
+
+    <section id="lam-quen">
+      <h2><span class="num">1</span> Làm quen khung chat</h2>
+      <p>Mọi thứ bắt đầu từ một khung chat. Đây là ảnh thật từ Antigravity, mình chỉ cắt riêng khung này:</p>
+      <figure class="shot">
+        <img src="img/ag-khung-chat.png" alt="Khung chat của Antigravity gồm tên thư mục, ô nhập yêu cầu, nút dấu cộng, chọn model và chọn Local" width="1320" height="340">
+        <figcaption>Khung chat ở màn hình chính của Antigravity.</figcaption>
+      </figure>
+      <ol class="legend">
+        <li><b>Thư mục làm việc</b> (ở góc trên, ví dụ <code>kdt</code>): agent chỉ nhìn thấy file trong thư mục này. Hãy tạo mỗi vụ việc / mỗi môn học một thư mục riêng và bỏ tài liệu vào đó.</li>
+        <li><b>Ô nhập</b> “Ask anything, @ to mention, / for actions”: gõ yêu cầu như nói chuyện. Gõ <code>@</code> để chỉ đích danh một file (ví dụ <code>@hop-dong.docx</code>). Gõ <code>/</code> để mở danh sách thao tác, trong đó có Skill của bạn.</li>
+        <li><b>Nút +</b>: đính kèm file hoặc ảnh vào cuộc trò chuyện.</li>
+        <li><b>Tên model</b> (ví dụ “Claude Opus 5.5 (Low)”): bộ não của agent. Cứ để mặc định khi mới dùng. Model mạnh hơn thì làm kỹ hơn nhưng chậm hơn.</li>
+        <li><b>Local</b>: agent làm việc trực tiếp trong thư mục trên máy bạn. Đây là lựa chọn phù hợp cho người mới.</li>
+        <li><b>Biểu tượng micro</b>: đọc yêu cầu bằng giọng nói thay vì gõ.</li>
+      </ol>
+      <div class="callout tip"><b>Cách hỏi tốt nhất:</b> nói rõ <b>(1) bạn là ai / đang làm gì, (2) file nào, (3) muốn kết quả ra sao, (4) điều không được làm</b>. Các prompt mẫu bên dưới đều theo công thức này, bạn chỉ việc copy rồi đổi tên file.</div>
+    </section>
+
+    <section id="bai-tap">
+      <h2><span class="num">2</span> Sửa bài tập và soát hợp đồng</h2>
+      <p>Dùng được cho cả hai việc: <b>sinh viên luật</b> nhờ chấm bài tập tình huống, và <b>người đi làm</b> nhờ soát nhanh hợp đồng, văn bản. Nguyên tắc chung: bạn tự làm trước, agent soát lại, bạn quyết định cuối cùng.</p>
+      <ol class="steps">
+        <li>Bỏ file vào thư mục (<code>.docx</code>, <code>.pdf</code>, <code>.txt</code>, hoặc ảnh chụp rõ nét).</li>
+        <li>Gõ yêu cầu, dùng <code>@tên-file</code> để chỉ đúng file.</li>
+        <li>Agent thường đưa ra <b>kế hoạch</b> trước. Đọc nhanh, đồng ý thì cho làm tiếp.</li>
+        <li>Mở file kết quả. Chỗ nào chưa hiểu thì hỏi tiếp: “Vì sao ý 3 bị đánh giá là sai?”</li>
+      </ol>
+      <div class="prompt">
+        <div class="prompt-head"><span>Chấm bài tập tình huống luật</span><button class="copy">Copy</button></div>
+        <pre>Mình là sinh viên năm 2 luật. Đề bài tình huống ở @de-bai.docx, bài làm của mình ở @bai-lam.docx.
+Hãy:
+1. Đánh giá theo bố cục: xác định vấn đề pháp lý, căn cứ pháp luật, áp dụng vào tình huống, kết luận.
+2. Chỉ ra ý còn thiếu hoặc lập luận chưa chặt, giải thích vì sao.
+3. Chỗ nào bạn trích dẫn điều luật, hãy ghi rõ tên văn bản và số điều để mình tự tra lại. Nếu không chắc, nói "không chắc" thay vì đoán.
+4. KHÔNG sửa file gốc và KHÔNG viết lại bài hộ mình. Ghi nhận xét vào file mới nhan-xet.docx.</pre>
+      </div>
+      <div class="prompt">
+        <div class="prompt-head"><span>Soát hợp đồng, liệt kê rủi ro</span><button class="copy">Copy</button></div>
+        <pre>Đọc @hop-dong-dich-vu.docx (hợp đồng mẫu, không có thông tin thật).
+Lập bảng gồm các cột: Điều khoản | Nội dung chính | Rủi ro cho bên thuê dịch vụ | Đề xuất sửa.
+Chú ý đặc biệt: phạt vi phạm, bồi thường thiệt hại, chấm dứt hợp đồng, giải quyết tranh chấp, bảo mật.
+Đánh dấu điều khoản mơ hồ hoặc thiếu. Không tự sửa file gốc, ghi kết quả vào file mới bao-cao-soat-hop-dong.docx.</pre>
+      </div>
+      <div class="prompt">
+        <div class="prompt-head"><span>Tóm tắt văn bản pháp luật / bản án dài</span><button class="copy">Copy</button></div>
+        <pre>Tóm tắt @ban-an.pdf cho người chưa biết vụ việc: các bên, yêu cầu của nguyên đơn, quan điểm của toà, căn cứ pháp luật toà áp dụng, kết quả.
+Mỗi ý kèm số trang để mình tra lại. Tối đa 1 trang A4.</pre>
+      </div>
+      <div class="callout warn"><b>File scan / ảnh chụp:</b> nếu chữ mờ, agent có thể đọc sai số tiền, ngày tháng hay tên. Với các chi tiết quan trọng, hãy tự đối chiếu với bản gốc.</div>
+    </section>
+
+    <section id="pdf">
+      <h2><span class="num">3</span> Tạo file PDF</h2>
+      <p>Agent soạn nội dung và tự chạy công cụ để xuất PDF. Bạn chỉ cần nói rõ <b>loại văn bản, bố cục, khổ giấy</b>. Hợp với: bản tóm tắt vụ việc, memo tư vấn, đề cương ôn thi, bảng so sánh quy định.</p>
+      <div class="prompt">
+        <div class="prompt-head"><span>Đề cương ôn thi thành PDF</span><button class="copy">Copy</button></div>
+        <pre>Dựa trên các file trong thư mục ghi-chu/, soạn đề cương ôn thi môn Luật Dân sự thành PDF khổ A4:
+- Có mục lục, chia chương rõ ràng, dùng bảng cho phần so sánh khái niệm.
+- Mỗi chương có khung "Cần nhớ" và 3 câu hỏi tự kiểm tra.
+- Font hỗ trợ tiếng Việt đầy đủ dấu (ví dụ Noto Sans), cỡ chữ 12.
+Lưu thành de-cuong-dan-su.pdf. Nếu cần cài thêm thư viện thì hỏi mình trước.</pre>
+      </div>
+      <div class="prompt">
+        <div class="prompt-head"><span>Memo tư vấn một trang</span><button class="copy">Copy</button></div>
+        <pre>Soạn memo tư vấn 1 trang PDF dựa trên @ghi-chu-vu-viec.docx, gửi cho khách hàng không có nền tảng pháp lý.
+Cấu trúc: Tóm tắt vấn đề → Các phương án → Rủi ro của từng phương án → Khuyến nghị. Văn phong dễ hiểu, hạn chế thuật ngữ.
+Để trống các chỗ cần luật sư xác nhận bằng dấu [CẦN KIỂM TRA]. Lưu thành memo.pdf.</pre>
+      </div>
+      <div class="callout tip"><b>Lỗi thường gặp:</b> PDF mất dấu tiếng Việt hoặc bảng bị tràn lề. Mở file ngay sau khi tạo, xem trang đầu và trang có bảng. Nếu lỗi, nhắn lại: “PDF bị mất dấu / tràn lề, hãy sửa rồi xuất lại.”</div>
+    </section>
+
+    <section id="skill">
+      <h2><span class="num">4</span> Dùng Skill</h2>
+      <p><b>Skill</b> là một “quy trình mẫu” bạn viết một lần, agent làm theo mãi. Ví dụ: mỗi lần soát hợp đồng đều theo một danh sách kiểm tra cố định của văn phòng bạn, thay vì phải gõ lại prompt dài.</p>
+      <p>Một skill là một thư mục chứa file <code>SKILL.md</code>. Trong project, đặt tại <code>.agents/skills/&lt;tên-skill&gt;/SKILL.md</code>. Đường dẫn có thể đổi theo phiên bản, hãy đối chiếu với <a href="https://antigravity.google/docs/skills" target="_blank" rel="noopener">tài liệu Skills chính thức</a>.</p>
+      <div class="prompt">
+        <div class="prompt-head"><span>.agents/skills/soat-hop-dong/SKILL.md</span><button class="copy">Copy</button></div>
+        <pre>---
+name: soat-hop-dong
+description: Soát hợp đồng và liệt kê rủi ro. Dùng khi người dùng nhờ rà soát, kiểm tra hoặc nhận xét một hợp đồng.
+---
+
+# Soát hợp đồng
+
+1. Xác định loại hợp đồng, các bên, giá trị, thời hạn.
+2. Kiểm tra từng nhóm điều khoản: đối tượng, giá và thanh toán, quyền và nghĩa vụ, phạt vi phạm, bồi thường, bảo mật, chấm dứt, giải quyết tranh chấp, luật áp dụng.
+3. Lập bảng: Điều khoản | Nội dung | Rủi ro | Đề xuất sửa.
+4. Đánh dấu điều khoản thiếu hoặc mơ hồ.
+5. Không tự khẳng định điều luật. Nếu viện dẫn luật, ghi tên văn bản + số điều và ghi chú "cần đối chiếu".
+6. Không sửa file gốc. Lưu kết quả vào file mới.</pre>
+      </div>
+      <h3>Cách gọi skill</h3>
+      <ul>
+        <li><b>Tự động:</b> chỉ cần nói “soát giúp mình hợp đồng này”, agent thấy mô tả khớp sẽ tự dùng skill.</li>
+        <li><b>Gọi đích danh:</b> gõ <code>/</code> trong ô nhập rồi chọn skill, hoặc nhắc tên skill trong yêu cầu.</li>
+      </ul>
+      <div class="callout tip"><b>Không biết viết?</b> Cứ nhờ chính agent: <i>“Hãy tạo giúp mình một skill tên soat-hop-dong theo danh sách kiểm tra sau: …”</i> rồi dán danh sách của bạn vào. Dòng <code>description</code> quan trọng nhất, vì agent dựa vào đó để biết khi nào dùng skill.</div>
+    </section>
+
+    <section id="website">
+      <h2><span class="num">5</span> Tạo trang web</h2>
+      <p>Bạn mô tả, agent viết, bạn xem và chỉnh. Hợp để làm trang giới thiệu văn phòng / câu lạc bộ pháp lý, hoặc trang hướng dẫn thủ tục cho khách hàng.</p>
+      <div class="prompt">
+        <div class="prompt-head"><span>Trang giới thiệu văn phòng luật (dữ liệu mẫu)</span><button class="copy">Copy</button></div>
+        <pre>Làm một trang web tĩnh (HTML, CSS, JS thuần) giới thiệu một văn phòng luật tên "Văn phòng Luật Minh Bạch" (tên giả, dùng nội dung mẫu).
+Có các mục: Giới thiệu, Lĩnh vực hành nghề (thẻ), Quy trình làm việc (4 bước), Câu hỏi thường gặp, Liên hệ (chỉ để chỗ trống).
+Phong cách nghiêm túc, màu xanh đậm và trắng, tiếng Việt, đọc tốt trên điện thoại.
+Chỉ tạo file trong thư mục này. Làm xong hãy mở thử, chụp màn hình và cho mình xem.</pre>
+      </div>
+      <ol class="steps">
+        <li>Xem kế hoạch agent đưa ra, nhất là danh sách file sẽ tạo.</li>
+        <li>Mở file <code>index.html</code> bằng trình duyệt để xem.</li>
+        <li>Chỉnh từng điểm nhỏ: “tiêu đề to hơn”, “đổi màu nút”, “thêm mục Tin tức”.</li>
+      </ol>
+      <div class="callout warn"><b>Trước khi đưa lên mạng:</b> xoá mọi tên khách hàng, số vụ việc, số điện thoại thật. Trang công khai thì ai cũng đọc được. Nội dung tư vấn pháp lý đăng công khai cũng nên có dòng “chỉ mang tính tham khảo, không thay thế tư vấn pháp lý”.</div>
+    </section>
+
+    <section id="flow">
+      <h2><span class="num">6</span> Dùng Google Flow</h2>
+      <p><b>Google Flow</b> là công cụ của Google để tạo video và hình ảnh bằng AI, chạy trên web, tách biệt với Antigravity. Trong ngành luật, nó hợp để làm <b>video giải thích pháp luật ngắn cho người dân</b>, hình minh hoạ cho bài thuyết trình, hay video giới thiệu văn phòng.</p>
+      <div class="callout warn">Mình giả định “gg flow” là <b>Google Flow</b>. Giá, credit và giao diện thay đổi thường xuyên, hãy xem <a href="https://support.google.com/flow" target="_blank" rel="noopener">trang trợ giúp chính thức</a> để biết bản mới nhất.</div>
+      <ol class="steps">
+        <li>Vào <a href="https://labs.google/flow" target="_blank" rel="noopener">labs.google/flow</a> bằng Chrome trên máy tính, đăng nhập tài khoản Google. Một số tính năng cần gói Google AI trả phí và tốn credit.</li>
+        <li>Tạo project mới. Ở ô nhập, chọn kiểu tạo: <b>Text to video</b> (chỉ mô tả bằng chữ), <b>Frames to video</b> (đưa ảnh đầu / cuối), hoặc <b>Ingredients to video</b> (ghép ảnh nhân vật, bối cảnh).</li>
+        <li>Thử bằng model nhanh cho đỡ tốn credit, ưng rồi mới tạo bản chất lượng cao.</li>
+        <li>Ghép nhiều clip ngắn thành cảnh dài bằng <b>Scenebuilder</b>, rồi tải video về.</li>
+      </ol>
+      <h3>Cách phối hợp với Antigravity</h3>
+      <p>Để Antigravity lo phần chữ, Flow lo phần hình: nhờ agent viết kịch bản và chia thành các cảnh, mỗi cảnh một prompt, rồi bạn dán lần lượt vào Flow.</p>
+      <div class="prompt">
+        <div class="prompt-head"><span>Kịch bản video giải thích pháp luật</span><button class="copy">Copy</button></div>
+        <pre>Mình cần video 40 giây giải thích cho người dân: "Hợp đồng miệng có giá trị pháp lý không?".
+Chia thành 5 cảnh, mỗi cảnh khoảng 8 giây. Với mỗi cảnh viết:
+- Lời thoại tiếng Việt (1–2 câu, dễ hiểu)
+- 1 prompt tiếng Anh cho Google Flow theo công thức: chủ thể + hành động + bối cảnh + góc máy + ánh sáng/phong cách
+Giữ phong cách hoạt hình 2D nhất quán giữa các cảnh. Nội dung pháp lý phải ghi kèm văn bản căn cứ để mình đối chiếu. Lưu vào kich-ban.md.</pre>
+      </div>
+      <div class="callout tip">Video giải thích luật cho công chúng nên được <b>luật sư kiểm tra nội dung</b> trước khi đăng, vì AI có thể diễn đạt sai hoặc dùng quy định đã hết hiệu lực.</div>
+    </section>
+
+    <section id="luu-y">
+      <h2><span class="num">7</span> Lưu ý riêng cho ngành luật</h2>
+      <div class="cards two">
+        <article class="card">
+          <h3>Bảo mật hồ sơ</h3>
+          <ul>
+            <li>Không đưa thông tin định danh của khách hàng, bí mật kinh doanh hay hồ sơ vụ việc đang xử lý vào AI nếu chưa được phép.</li>
+            <li>Ẩn danh trước khi đưa vào: thay tên bằng “Bên A”, “Bên B”, bỏ số CCCD, địa chỉ, số tài khoản.</li>
+            <li>Hỏi văn phòng / giảng viên về quy định dùng AI trước khi áp dụng cho việc thật.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Kiểm tra độ chính xác</h3>
+          <ul>
+            <li>AI có thể bịa điều luật, số hiệu văn bản, án lệ. Mọi trích dẫn đều phải tra lại.</li>
+            <li>Kiểm tra văn bản còn hiệu lực hay đã được sửa đổi, thay thế.</li>
+            <li>Nhờ agent ghi rõ “không chắc” thay vì đoán, như trong các prompt mẫu ở trên.</li>
+          </ul>
+        </article>
+      </div>
+      <h3>Nơi tra cứu văn bản pháp luật</h3>
+      <ul>
+        <li><a href="https://vbpl.vn" target="_blank" rel="noopener">vbpl.vn</a>: Cơ sở dữ liệu quốc gia về văn bản pháp luật.</li>
+        <li><a href="https://thuvienphapluat.vn" target="_blank" rel="noopener">thuvienphapluat.vn</a>: tra cứu văn bản kèm tình trạng hiệu lực.</li>
+      </ul>
+      <div class="callout tip"><b>Nguyên tắc:</b> AI là trợ lý soạn thảo và rà soát, không phải luật sư. Người ký tên và chịu trách nhiệm cuối cùng vẫn là bạn. Với bài tập ở trường, hãy xem quy định về dùng AI của khoa; dùng để hiểu lỗi sai của mình thì thường ổn, nộp nguyên bài do AI viết thì thường không.</div>
+      <h3>Tài liệu chính thức</h3>
+      <ul>
+        <li><a href="https://antigravity.google/docs/home" target="_blank" rel="noopener">Antigravity Docs</a></li>
+        <li><a href="https://antigravity.google/docs/skills" target="_blank" rel="noopener">Antigravity Skills</a></li>
+        <li><a href="https://support.google.com/flow" target="_blank" rel="noopener">Trợ giúp Google Flow</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Trang hướng dẫn không chính thức, không liên kết với Google. Nội dung chỉ mang tính tham khảo và không phải tư vấn pháp lý. Thông tin sản phẩm có thể thay đổi, hãy kiểm tra lại tài liệu gốc.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

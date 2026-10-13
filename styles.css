@@ -115,3 +115,30 @@ footer { border-top: 1px solid var(--border); padding: 24px 16px; text-align: ce
 .shot figcaption { color: var(--muted); font-size: .88rem; margin-top: 6px; }
 .legend { padding-left: 22px; }
 .legend li { margin-bottom: 8px; }
+
+main.wide { max-width: 1040px; }
+.lib-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+#search { flex: 1 1 260px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); color: var(--text); font: inherit; }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.tab { border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 999px; padding: 6px 14px; cursor: pointer; font: inherit; font-size: .92rem; }
+.tab:hover { border-color: var(--accent); }
+.tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.pcard { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
+.pcard[hidden] { display: none; }
+.pcard.featured { grid-column: 1 / -1; border-color: var(--accent); background: var(--accent-soft); }
+.pcard h3 { margin: 0; font-size: 1.05rem; }
+.pcard-top { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.pnum { display: inline-grid; place-items: center; min-width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fff; font-size: .8rem; font-weight: 700; }
+.ptag { font-size: .78rem; color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 1px 10px; }
+.ptag.hot { color: #fff; background: var(--tip-border); border-color: var(--tip-border); }
+.pdesc { margin: 0; }
+.pfile { margin: 0; font-size: .88rem; color: var(--muted); }
+.pdetails summary { cursor: pointer; color: var(--accent); font-size: .92rem; }
+.pdetails pre { margin-top: 8px; max-height: 340px; overflow: auto; }
+.copy.big { margin-top: auto; padding: 8px 14px; background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.copy.big:hover { color: #fff; opacity: .9; }
+.nav a[aria-current="page"] { background: var(--accent-soft); color: var(--accent); }
+.nav .nav-cta{background:var(--accent);color:#fff}.nav .nav-cta:hover{background:var(--accent);color:#fff;opacity:.9}
+.copy.big, .copy.big:hover, .tab.active, .pnum, .num, .nav .nav-cta, .nav .nav-cta:hover { color: var(--bg); }
+.ptag.hot { color: var(--bg); }

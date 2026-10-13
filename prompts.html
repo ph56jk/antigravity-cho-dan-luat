@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thư viện prompt cho dân luật</title>
+  <meta name="description" content="30 prompt có sẵn cho Antigravity và Google Flow trong ngành luật: copy rồi dán là chạy.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233b5bdb'/%3E%3Cpath d='M16 6l8 20h-4l-4-11-4 11H8z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">Antigravity<span> cho dân luật</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Mở menu" aria-expanded="false">☰</button>
+    <nav id="nav" class="nav">
+      <a href="index.html">Hướng dẫn</a>
+      <a href="prompts.html" aria-current="page">Thư viện prompt</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" aria-label="Đổi giao diện sáng/tối">◐</button>
+  </header>
+
+  <main id="top" class="wide">
+    <section class="hero">
+      <p class="eyebrow">Copy rồi dán là chạy</p>
+      <h1>Thư viện 30 prompt cho dân luật</h1>
+      <p class="lead">Chọn một prompt, bấm <b>Copy prompt</b>, rồi dán vào khung chat của Antigravity (hoặc Google Flow với các prompt video / ảnh). Prompt đầu tiên đặc biệt: nó bảo AI <b>hỏi bạn từng câu</b> để bạn trả lời, rồi mới dựng trang web.</p>
+      <ol class="steps">
+        <li>Mở Antigravity, chọn thư mục làm việc và đính kèm file cần dùng (dòng 📎 ở mỗi thẻ cho biết cần file gì).</li>
+        <li>Bấm <b>Copy prompt</b> ở thẻ bạn chọn, dán vào khung chat rồi gửi.</li>
+        <li>Chỗ nào có <code>[GHI ...]</code> thì sửa lại trước khi gửi. AI hỏi gì thì trả lời, đọc kế hoạch rồi mới duyệt.</li>
+      </ol>
+      <div class="callout warn">Đừng đính kèm tài liệu có thông tin thật của khách hàng nếu chưa được phép. Ẩn danh trước (Bên A, Bên B). Mọi trích dẫn luật AI đưa ra đều phải tra lại ở <a href="https://vbpl.vn" target="_blank" rel="noopener">vbpl.vn</a> hoặc nguồn chính thức.</div>
+    </section>
+
+    <section class="lib">
+      <div class="lib-bar">
+        <input id="search" type="search" placeholder="Tìm prompt: hợp đồng, PDF, video…" aria-label="Tìm prompt">
+        <span id="count" class="muted"></span>
+      </div>
+      <div id="tabs" class="tabs" role="group" aria-label="Lọc theo nhóm"></div>
+      <div id="grid" class="pgrid"><noscript>Trang này cần JavaScript để hiện danh sách prompt.</noscript></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Trang hướng dẫn không chính thức, không liên kết với Google. Nội dung chỉ mang tính tham khảo và không phải tư vấn pháp lý.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="prompts.js"></script>
+</body>
+</html>

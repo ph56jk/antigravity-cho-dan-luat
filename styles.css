@@ -142,3 +142,9 @@ main.wide { max-width: 1040px; }
 .nav .nav-cta{background:var(--accent);color:#fff}.nav .nav-cta:hover{background:var(--accent);color:#fff;opacity:.9}
 .copy.big, .copy.big:hover, .tab.active, .pnum, .num, .nav .nav-cta, .nav .nav-cta:hover { color: var(--bg); }
 .ptag.hot { color: var(--bg); }
+.more-btn { display: block; margin: 20px auto 0; padding: 10px 22px; border: 1px solid var(--accent); background: var(--surface); color: var(--accent); border-radius: 8px; cursor: pointer; font: inherit; font-weight: 600; }
+.more-btn:hover { background: var(--accent-soft); }
+.more-btn[hidden] { display: none; }
+.tool-list { display: grid; gap: 10px; margin: 16px 0; }
+.tool-list > div { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; }
+.tool-list code { font-weight: 600; }

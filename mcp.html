@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kết nối thư viện prompt vào AI (MCP) · Antigravity cho dân luật</title>
+  <meta name="description" content="Cài MCP server để Antigravity, Claude, Cursor tự tìm và dùng hơn 1.700 prompt pháp lý tiếng Việt, không cần copy tay.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233b5bdb'/%3E%3Cpath d='M16 6l8 20h-4l-4-11-4 11H8z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">Antigravity<span> cho dân luật</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Mở menu" aria-expanded="false">☰</button>
+    <nav id="nav" class="nav">
+      <a href="index.html">Hướng dẫn</a>
+      <a href="prompts.html">Thư viện prompt</a>
+      <a href="mcp.html" aria-current="page">Kết nối AI (MCP)</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" aria-label="Đổi giao diện sáng/tối">◐</button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow">Không cần copy tay nữa</p>
+      <h1>Kết nối thư viện prompt vào AI của bạn</h1>
+      <p class="lead"><b>MCP</b> là cách cắm thêm “công cụ” cho trợ lý AI. Sau khi cài, AI trong Antigravity (hoặc Claude, Cursor…) <b>tự tra</b> <a href="prompts.html">thư viện hơn 1.700 prompt</a>: bạn chỉ cần nói “soát giúp mình hợp đồng thuê nhà, mình là bên thuê”, AI tự tìm prompt hợp nhất, hỏi bạn chỗ còn thiếu rồi làm theo.</p>
+      <div class="chips">
+        <a href="#tu-cai" class="chip">⚡ Nhờ AI tự cài (dễ nhất)</a>
+        <a href="#cai-tay" class="chip">🛠️ Tự cài bằng tay</a>
+        <a href="#ung-dung-khac" class="chip">🧩 Claude, Cursor…</a>
+        <a href="#cach-dung" class="chip">💬 Cách dùng</a>
+        <a href="#loi" class="chip">🩺 Lỗi thường gặp</a>
+      </div>
+      <div class="callout tip"><b>An toàn:</b> chương trình chạy ngay trên máy bạn và chỉ làm một việc: đọc danh sách prompt (tải từ trang này, có lưu sẵn để dùng khi mất mạng). Nó <b>không đọc file</b> của bạn và <b>không gửi gì</b> đi đâu. Mã nguồn ngắn, mở xem được tại <a href="mcp/server.js">mcp/server.js</a>.</div>
+    </section>
+
+    <section id="tu-cai">
+      <h2><span class="num">1</span> Cách dễ nhất: nhờ Antigravity tự cài</h2>
+      <p>Mở Antigravity, chọn một thư mục bất kỳ, dán prompt dưới đây vào khung chat rồi gửi. Agent sẽ kiểm tra máy, tải file, sửa cấu hình và báo bạn khi xong. Khi nó xin phép chạy lệnh, đọc qua rồi bấm đồng ý.</p>
+      <div class="prompt">
+        <div class="prompt-head"><span>Prompt tự cài MCP “Thư viện prompt cho dân luật”</span><button class="copy">Copy</button></div>
+        <pre>Cài giúp mình MCP server "Thư viện prompt cho dân luật" vào Antigravity. Làm lần lượt, mỗi bước báo kết quả ngắn gọn:
+
+1. Kiểm tra Node.js bằng lệnh: node -v
+   Nếu chưa có hoặc phiên bản dưới 18 thì DỪNG LẠI, hướng dẫn mình cài bản LTS ở https://nodejs.org rồi bảo mình gửi lại prompt này. Không tự cài Node.
+
+2. Tạo thư mục .prompt-luat trong thư mục người dùng (home) của máy này, rồi tải file
+   https://ph56jk.github.io/antigravity-cho-dan-luat/mcp/server.js
+   về thư mục đó, đặt tên server.js. Cho mình biết đường dẫn tuyệt đối của file.
+
+3. Chạy thử: gửi dòng {"jsonrpc":"2.0","id":1,"method":"tools/list"} vào stdin của lệnh "node &lt;đường dẫn tuyệt đối&gt;/server.js". Kết quả phải có 3 tool: search_prompts, get_prompt, list_categories.
+
+4. Tìm file cấu hình MCP của Antigravity: ~/.gemini/config/mcp_config.json hoặc ~/.gemini/antigravity/mcp_config.json (trên Windows là C:\Users\&lt;tên&gt;\.gemini\...). Dùng file nào đang tồn tại; nếu có cả hai thì sửa cả hai; nếu chưa có thì tạo ~/.gemini/config/mcp_config.json.
+   Sao lưu file thành mcp_config.json.bak trước khi sửa. Thêm vào trong "mcpServers" (giữ nguyên các server khác, giữ JSON hợp lệ):
+   "prompt-luat": { "command": "node", "args": ["&lt;đường dẫn tuyệt đối tới server.js&gt;"] }
+   Trên Windows nhớ viết dấu \ thành \\ trong JSON.
+
+5. Cho mình xem đoạn cấu hình đã thêm, rồi nhắc mình: bấm "..." ở khung agent → MCP Servers → Manage MCP Servers → Refresh (hoặc khởi động lại Antigravity) để thấy server prompt-luat.
+
+Không sửa hay xoá file nào khác ngoài các file nêu trên.</pre>
+      </div>
+      <p class="note">Xong rồi, thử hỏi: <i>“Dùng thư viện prompt luật, tìm giúp mình prompt soạn đơn ly hôn thuận tình.”</i></p>
+    </section>
+
+    <section id="cai-tay">
+      <h2><span class="num">2</span> Tự cài bằng tay (3 bước)</h2>
+      <ol class="steps">
+        <li><b>Cài Node.js</b> bản LTS từ <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> (nếu chưa có). Mở Terminal (macOS) hoặc PowerShell (Windows), gõ <code>node -v</code>, thấy <code>v18</code> trở lên là được.</li>
+        <li><b>Tải chương trình</b> về thư mục <code>.prompt-luat</code> trong thư mục người dùng:</li>
+      </ol>
+      <div class="prompt">
+        <div class="prompt-head"><span>macOS / Linux (Terminal)</span><button class="copy">Copy</button></div>
+        <pre>mkdir -p ~/.prompt-luat && curl -fsSL https://ph56jk.github.io/antigravity-cho-dan-luat/mcp/server.js -o ~/.prompt-luat/server.js && echo "$HOME/.prompt-luat/server.js"</pre>
+      </div>
+      <div class="prompt">
+        <div class="prompt-head"><span>Windows (PowerShell)</span><button class="copy">Copy</button></div>
+        <pre>New-Item -ItemType Directory -Force "$HOME\.prompt-luat" | Out-Null; Invoke-WebRequest https://ph56jk.github.io/antigravity-cho-dan-luat/mcp/server.js -OutFile "$HOME\.prompt-luat\server.js"; "$HOME\.prompt-luat\server.js"</pre>
+      </div>
+      <p>Dòng cuối lệnh in ra <b>đường dẫn đầy đủ</b> của file, ví dụ <code>/Users/lan/.prompt-luat/server.js</code> hoặc <code>C:\Users\lan\.prompt-luat\server.js</code>. Giữ lại để dùng ở bước 3.</p>
+      <ol class="steps" start="3" style="counter-reset: s 2">
+        <li><b>Thêm vào Antigravity:</b> ở khung agent bấm <b>…</b> → <b>MCP Servers</b> → <b>Manage MCP Servers</b> → <b>View raw config</b>. File <code>mcp_config.json</code> mở ra; thêm mục <code>prompt-luat</code> vào trong <code>"mcpServers"</code>, thay đường dẫn bằng đường dẫn của bạn, lưu lại rồi bấm <b>Refresh</b>.</li>
+      </ol>
+      <div class="prompt">
+        <div class="prompt-head"><span>mcp_config.json (macOS / Linux)</span><button class="copy">Copy</button></div>
+        <pre>{
+  "mcpServers": {
+    "prompt-luat": {
+      "command": "node",
+      "args": ["/Users/TEN-CUA-BAN/.prompt-luat/server.js"]
+    }
+  }
+}</pre>
+      </div>
+      <div class="prompt">
+        <div class="prompt-head"><span>mcp_config.json (Windows)</span><button class="copy">Copy</button></div>
+        <pre>{
+  "mcpServers": {
+    "prompt-luat": {
+      "command": "node",
+      "args": ["C:\\Users\\TEN-CUA-BAN\\.prompt-luat\\server.js"]
+    }
+  }
+}</pre>
+      </div>
+      <div class="callout warn"><b>Đã có server khác trong file?</b> Đừng dán đè cả file. Chỉ thêm khối <code>"prompt-luat": { … }</code> vào trong <code>"mcpServers"</code>, ngăn cách với server trước bằng dấu phẩy. Sai một dấu phẩy là Antigravity không đọc được cả file.</div>
+    </section>
+
+    <section id="ung-dung-khac">
+      <h2><span class="num">3</span> Dùng với ứng dụng AI khác</h2>
+      <p>Đa số ứng dụng hỗ trợ MCP dùng chung kiểu cấu hình trên (<code>"command": "node"</code> + đường dẫn tới <code>server.js</code>). Làm bước 1–2 ở trên trước, rồi:</p>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Ứng dụng</th><th>Thêm ở đâu</th></tr>
+          <tr><td>Claude Desktop</td><td>Settings → Developer → <b>Edit Config</b>, thêm khối <code>prompt-luat</code> giống trên vào <code>"mcpServers"</code> trong <code>claude_desktop_config.json</code>, rồi tắt hẳn và mở lại Claude.</td></tr>
+          <tr><td>Claude Code</td><td>Chạy <code>claude mcp add prompt-luat -s user -- node ~/.prompt-luat/server.js</code></td></tr>
+          <tr><td>Codex CLI</td><td>Chạy <code>codex mcp add prompt-luat -- node ~/.prompt-luat/server.js</code></td></tr>
+          <tr><td>Cursor</td><td>Settings → MCP → Add new MCP server, hoặc thêm khối trên vào <code>~/.cursor/mcp.json</code>.</td></tr>
+          <tr><td>Gemini CLI</td><td>Thêm khối trên vào <code>"mcpServers"</code> trong <code>~/.gemini/settings.json</code>.</td></tr>
+        </table>
+      </div>
+      <details class="box">
+        <summary>Cho người rành kỹ thuật: chạy thẳng từ GitHub bằng npx</summary>
+        <p>Nếu máy có sẵn Git và Node, có thể bỏ qua bước tải file và dùng <code>"command": "npx"</code>, <code>"args": ["-y", "github:ph56jk/antigravity-cho-dan-luat"]</code>. Biến môi trường <code>PROMPT_LUAT_OFFLINE=1</code> tắt việc tự cập nhật; <code>PROMPT_LUAT_URL</code> trỏ sang thư viện prompt khác cùng định dạng.</p>
+      </details>
+    </section>
+
+    <section id="cach-dung">
+      <h2><span class="num">4</span> Cài xong thì dùng thế nào?</h2>
+      <p>Cứ nhắn yêu cầu như bình thường. Nếu AI chưa tự dùng thư viện, thêm câu <b>“dùng thư viện prompt luật”</b> vào yêu cầu. Ví dụ:</p>
+      <div class="prompt">
+        <div class="prompt-head"><span>Ví dụ yêu cầu</span><button class="copy">Copy</button></div>
+        <pre>Dùng thư viện prompt luật: mình là bên thuê, soát giúp mình @hop-dong-thue-mat-bang.docx.
+
+Tìm trong thư viện prompt luật 3 prompt ôn thi môn Luật Đất đai, cho mình chọn rồi làm luôn.
+
+Thư viện prompt luật có những nhóm nào? Liệt kê các loại hợp đồng có sẵn prompt.
+
+Lấy nguyên văn prompt "Checklist hồ sơ: đăng ký kết hôn" để mình copy.</pre>
+      </div>
+      <h3>AI có thêm 3 công cụ</h3>
+      <div class="tool-list">
+        <div><code>search_prompts</code> — tìm prompt theo từ khoá, có dấu hay không dấu đều được, lọc theo nhóm.</div>
+        <div><code>get_prompt</code> — lấy nội dung đầy đủ của một prompt kèm hướng dẫn để AI làm theo đúng cách (hỏi bạn chỗ <code>[GHI …]</code>, nhắc đính kèm file).</div>
+        <div><code>list_categories</code> — xem các nhóm và chủ đề con (loại hợp đồng, thủ tục, môn học…).</div>
+      </div>
+      <p>Ứng dụng nào hỗ trợ <b>MCP prompts</b> (gõ <code>/</code> trong ô chat) sẽ thấy thêm 30 prompt chọn lọc và lệnh <code>tim-prompt-luat</code>: bạn chỉ cần mô tả việc cần làm.</p>
+    </section>
+
+    <section id="loi">
+      <h2><span class="num">5</span> Lỗi thường gặp</h2>
+      <div class="cards two">
+        <article class="card">
+          <h3>Không thấy server prompt-luat</h3>
+          <ul>
+            <li>Bấm Refresh trong Manage MCP Servers hoặc khởi động lại ứng dụng.</li>
+            <li>Kiểm tra file cấu hình là JSON hợp lệ (thường do thiếu / thừa dấu phẩy).</li>
+            <li>Đường dẫn phải là đường dẫn đầy đủ, không dùng <code>~</code> trong <code>"args"</code>.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Báo lỗi “node” hoặc server tắt ngay</h3>
+          <ul>
+            <li>Chưa cài Node.js, hoặc phiên bản dưới 18: cài lại bản LTS rồi mở lại ứng dụng.</li>
+            <li>Nếu vẫn lỗi, thay <code>"node"</code> bằng đường dẫn đầy đủ (gõ <code>which node</code> trên macOS, <code>where node</code> trên Windows để xem).</li>
+            <li>Lần chạy đầu cần có mạng để tải danh sách prompt; sau đó dùng được khi mất mạng.</li>
+          </ul>
+        </article>
+      </div>
+      <h3>Gỡ cài đặt</h3>
+      <p>Xoá khối <code>"prompt-luat"</code> trong file cấu hình MCP, rồi xoá thư mục <code>.prompt-luat</code> trong thư mục người dùng.</p>
+      <div class="callout warn">Prompt chỉ là khung yêu cầu. Kết quả AI làm ra, nhất là điều luật, số hiệu văn bản, thời hạn, lệ phí, <b>phải được bạn tra lại</b> ở <a href="https://vbpl.vn" target="_blank" rel="noopener">vbpl.vn</a> hoặc nguồn chính thức trước khi dùng.</div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Trang hướng dẫn không chính thức, không liên kết với Google hay Anthropic. Nội dung chỉ mang tính tham khảo và không phải tư vấn pháp lý.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

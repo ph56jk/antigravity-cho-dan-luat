@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Thư viện prompt cho dân luật</title>
-  <meta name="description" content="30 prompt có sẵn cho Antigravity và Google Flow trong ngành luật: copy rồi dán là chạy.">
+  <meta name="description" content="Hơn 1.700 prompt có sẵn cho Antigravity và Google Flow trong ngành luật: hợp đồng, tranh chấp, thủ tục, hình sự, học luật, pháp chế. Copy rồi dán là chạy, hoặc kết nối qua MCP.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233b5bdb'/%3E%3Cpath d='M16 6l8 20h-4l-4-11-4 11H8z' fill='white'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -15,6 +15,7 @@
     <nav id="nav" class="nav">
       <a href="index.html">Hướng dẫn</a>
       <a href="prompts.html" aria-current="page">Thư viện prompt</a>
+      <a href="mcp.html" class="nav-cta">Kết nối AI (MCP)</a>
     </nav>
     <button class="theme-btn" id="themeBtn" aria-label="Đổi giao diện sáng/tối">◐</button>
   </header>
@@ -22,8 +23,9 @@
   <main id="top" class="wide">
     <section class="hero">
       <p class="eyebrow">Copy rồi dán là chạy</p>
-      <h1>Thư viện 30 prompt cho dân luật</h1>
-      <p class="lead">Chọn một prompt, bấm <b>Copy prompt</b>, rồi dán vào khung chat của Antigravity (hoặc Google Flow với các prompt video / ảnh). Prompt đầu tiên đặc biệt: nó bảo AI <b>hỏi bạn từng câu</b> để bạn trả lời, rồi mới dựng trang web.</p>
+      <h1>Thư viện <span data-total>1.700+</span> prompt cho dân luật</h1>
+      <p class="lead">Hợp đồng, tranh chấp, thủ tục hành chính, hình sự, học luật, pháp chế, dịch thuật, truyền thông pháp lý. Gõ việc bạn cần vào ô tìm (gõ không dấu cũng được), bấm <b>Copy prompt</b>, rồi dán vào khung chat của Antigravity (hoặc Google Flow với các prompt video / ảnh).</p>
+      <div class="callout tip"><b>Không muốn copy tay?</b> <a href="mcp.html">Kết nối thư viện này vào AI qua MCP</a>: sau đó chỉ cần nói “soát giúp mình hợp đồng thuê nhà”, AI tự tìm prompt phù hợp trong thư viện và làm theo.</div>
       <ol class="steps">
         <li>Mở Antigravity, chọn thư mục làm việc và đính kèm file cần dùng (dòng 📎 ở mỗi thẻ cho biết cần file gì).</li>
         <li>Bấm <b>Copy prompt</b> ở thẻ bạn chọn, dán vào khung chat rồi gửi.</li>
@@ -34,11 +36,12 @@
 
     <section class="lib">
       <div class="lib-bar">
-        <input id="search" type="search" placeholder="Tìm prompt: hợp đồng, PDF, video…" aria-label="Tìm prompt">
+        <input id="search" type="search" placeholder="Tìm prompt: thuê nhà, ly hôn, trắc nghiệm dân sự, sổ đỏ…" aria-label="Tìm prompt">
         <span id="count" class="muted"></span>
       </div>
       <div id="tabs" class="tabs" role="group" aria-label="Lọc theo nhóm"></div>
       <div id="grid" class="pgrid"><noscript>Trang này cần JavaScript để hiện danh sách prompt.</noscript></div>
+      <button id="more" class="more-btn" hidden>Xem thêm</button>
     </section>
   </main>
 

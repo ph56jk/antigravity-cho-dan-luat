@@ -1,0 +1,14 @@
+{
+  "name": "prompt-luat-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MCP server cho Thư viện prompt cho dân luật (hơn 1.700 prompt pháp lý tiếng Việt).",
+  "license": "MIT",
+  "bin": { "prompt-luat-mcp": "mcp/server.js" },
+  "files": ["mcp/server.js", "prompts.json"],
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "node tools/build-prompts.js",
+    "mcp": "node mcp/server.js"
+  }
+}
